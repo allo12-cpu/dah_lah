@@ -94,8 +94,8 @@ conn.handler = async function (m) {
           if (!isNumber(user.age)) user.age = -1
           if (!isNumber(user.regTime)) user.regTime = -1
         }
-      } else global.DATABASE._@user[m.sender] = {
-        exp: 99999,
+      } else global.DATABASE._data.users[m.sender] = {
+        exp: 0,
         limit: 99999,
         lastclaim: 0,
         registered: false,
@@ -209,7 +209,7 @@ conn.handler = async function (m) {
 
         m.isCommand = true
         let xp = 'exp' in plugin ? parseInt(plugin.exp) : 9 // XP Earning per command
-        if (xp > 150) m.reply('Ngecit -_-') // Hehehe
+        if (xp > 99) m.reply('Ngecit -_-') // Hehehe
         else m.exp += xp
         if (!isPrems && global.DATABASE._data.users[m.sender].limit < m.limit * 1 && plugin.limit) {
           this.reply(m.chat, `Limit anda habis, silahkan beli melalui *${usedPrefix}buy* atau bisa juga beli Limit di *#premium*`, m)
